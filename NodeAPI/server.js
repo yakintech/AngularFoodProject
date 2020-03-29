@@ -101,7 +101,7 @@ app.post('/api/contact',(req,res) => {
 
     SendEMail(mailOptions);
 
-    res.send("OK!");
+    res.json({message:"OK!"});
 
 })
 
