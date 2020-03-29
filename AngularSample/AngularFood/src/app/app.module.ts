@@ -9,6 +9,7 @@ import { TopmenuComponent } from './topmenu/topmenu.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ContentComponent } from './content/content.component';
     TopmenuComponent,
     AboutComponent,
     FooterComponent,
-    ContentComponent
+    ContentComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

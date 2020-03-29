@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 var bodyParser = require('body-parser')
+var nodemailer = require('nodemailer');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -91,7 +92,46 @@ app.post('/api/blogpost',(req,res) => {
         }
     })
 
+});
+
+
+app.post('/api/contact',(req,res) => {
+    mailOptions.subject = "Konu: " + req.body.subject;
+    mailOptions.text = req.body.username + " isimli kişiden bir mesajınız var. Mesajı atan kullanıcı emaili: " + req.body.email + ". Mesaj içeriği: " + req.body.content; 
+
+    SendEMail(mailOptions);
+
+    res.send("OK!");
+
 })
 
-
 app.listen(3000);
+
+
+
+var mailOptions = {
+    from: 'bilgebatman19@gmail.com',
+    to: 'yildiz.cagatay@hotmail.com',
+    subject: '',
+    text: ''
+  };
+
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'bilgebatman19@gmail.com',
+      pass: 'Superman!35'
+    }
+  });
+  
+
+  function SendEMail(mailOptions){
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+  }
