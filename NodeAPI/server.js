@@ -32,8 +32,49 @@ const blogPostSchema = new Schema({
     isDeleted:{type:Boolean,default:false}
 })
 
+const personalSchema = new Schema({
+    name:String,
+    surname:String,
+    title:String,
+    description:String,
+    isdeleted:{type:Boolean,default:false}
+})
+
 const Food = mongoose.model('FoodModel',foodSchema);
 const BlogPost = mongoose.model('BlogPostModel',blogPostSchema);
+const Personal = mongoose.model('PersonalModel',personalSchema);
+
+//get sonrası personal listeleme
+app.get('/api/personals',(req,res) => {
+    Personal.find({isdeleted:false},(err,document) => {
+        if(!err){
+            res.json(document);
+        }
+        else{
+            res.json(err);
+        }
+    })
+});
+
+app.post('/api/personals',(req,res) =>{
+    var person = new Personal({
+        name:req.body.name,
+        surname:req.body.surname,
+        description:req.body.description,
+        title:req.body.title
+    });
+
+
+    person.save((err) => {
+        if(!err){
+            res.json({"status":"SUCCESS!!"})
+        }
+        else{
+            res.status(500).json({"err":err})
+        }
+    });
+})
+
 
 //get sonrası food listeleme
 app.get('/api/foods',(req,res) => { 
@@ -55,7 +96,7 @@ app.post('/api/foods',(req,res)=>{
 
     food.save((err) => {
         if(!err){
-            res.send("SUCCESS!!")
+            res.json({"status":"SUCCESS!!"})
         }
         else{
             res.status(500).send(err);
