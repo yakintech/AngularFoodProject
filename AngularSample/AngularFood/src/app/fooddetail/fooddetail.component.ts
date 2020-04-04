@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-fooddetail',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooddetailComponent implements OnInit {
 
-  constructor() { }
+  id:any;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log("HELLO ROUTER")
+ 
+     this.route.params.subscribe(params => {
+      this.id = params['id'];
+   });
   }
 
 }
