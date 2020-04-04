@@ -1,0 +1,13 @@
+img{
+    width: 400px;
+    height: 400px;
+    background-repeat: round;
+}
+
+.ayi{
+    background-image: url('/assets/ayi.jpg');
+    
+}
+.ayi2{
+    background-image: url('/assets/kutupayi.jpg');
+}

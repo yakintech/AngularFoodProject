@@ -3,7 +3,7 @@
   <!-- First Photo Grid-->
   <div class="w3-row-padding w3-padding-16 w3-center" id="food">
     <div class="w3-quarter" *ngFor="let item of foods">
-      <img src="/assets/img/{{item.path}}"  alt="{{item.title}}" style="width:100%">
+      <img [ngClass]="{menu: true}" src="/assets/img/{{item.path}}"  alt="{{item.title}}" style="width:100%">
       <h3>{{item.title}}</h3>
       <p>{{item.description}}</p>
     </div>
