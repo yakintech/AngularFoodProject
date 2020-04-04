@@ -1,35 +1,16 @@
-
-
-
 <app-sidebar></app-sidebar>
 
-<app-topmenu></app-topmenu>
 
-<a routerLink="/fooddetail" routerLinkActive="active">Food Detail</a>
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+    <div class="w3-right w3-padding-16"><a routerLink="/fooddetail" routerLinkActive="active">Food Detail</a></div>
+    <div class="w3-center w3-padding-16"><a routerLink="/home" routerLinkActive="active">Home</a></div>
+  </div>
+</div>
+
+
 <router-outlet></router-outlet>
 
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
-  <app-content></app-content>
-  <app-about></app-about>
-
-  <app-personal></app-personal>
-  <hr>
-  <app-contact></app-contact>
-  <app-footer></app-footer>
-
-  <!-- End page content -->
-</div>
-
-<script>
-  // Script to open and close sidebar
-  function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-  }
-
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-  }
-</script>

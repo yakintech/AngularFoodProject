@@ -14,9 +14,15 @@ import { ContentComponent } from './content/content.component';
 import { ContactComponent } from './contact/contact.component';
 import { PersonalComponent } from './personal/personal.component';
 import { FooddetailComponent } from './fooddetail/fooddetail.component';
+import { HomeComponent } from './home/home.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const appRoutes: Routes = [
-  { path: 'fooddetail', component: FooddetailComponent },
+  { path: 'fooddetail/:id', component: FooddetailComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '**', component: PagenotfoundComponent },
+
+
 ];
 
 
@@ -30,7 +36,9 @@ const appRoutes: Routes = [
     ContentComponent,
     ContactComponent,
     PersonalComponent,
-    FooddetailComponent
+    FooddetailComponent,
+    HomeComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
