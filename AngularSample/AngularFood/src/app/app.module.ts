@@ -18,9 +18,10 @@ import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'fooddetail/:id', component: FooddetailComponent },
   { path: 'home', component: HomeComponent },
-  { path: '/**', component: PagenotfoundComponent }
+  { path: '**', component: PagenotfoundComponent }
 
 
 ];
