@@ -11,4 +11,8 @@ export class PersonalService {
   GetAll(){
     return this.http.get("http://localhost:3000/api/personals");
   }
+
+  GetByID(id){
+    return this.http.get("http://localhost:3000/api/personals/" + id);
+  }
 }

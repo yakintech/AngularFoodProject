@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AddfoodComponent } from './addfood/addfood.component';
 import { FoodlistComponent } from './foodlist/foodlist.component';
+import { PersonaldetailComponent } from './personaldetail/personaldetail.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin/addfood', component: AddfoodComponent },
   { path: 'admin/foodlist', component: FoodlistComponent },
+  { path: 'personaldetail/:id', component: PersonaldetailComponent },
   { path: '**', component: PagenotfoundComponent }
 
 
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     HomeComponent,
     PagenotfoundComponent,
     AddfoodComponent,
-    FoodlistComponent
+    FoodlistComponent,
+    PersonaldetailComponent
   ],
   imports: [
     BrowserModule,

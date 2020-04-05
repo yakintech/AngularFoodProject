@@ -81,6 +81,15 @@ app.post('/api/personals',(req,res) =>{
     });
 })
 
+//id ye göre personal veren 
+app.get('/api/personals/:id',(req,res) => {
+    Personal.findById(req.params.id,(err,document) => {
+        if(!err){
+            res.json(document);
+        }
+    })
+})
+
 //get sonrası food listeleme
 app.get('/api/foods',(req,res) => { 
     Food.find({isdeleted:false},(err,document) => {
