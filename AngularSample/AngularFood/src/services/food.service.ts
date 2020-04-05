@@ -12,4 +12,9 @@ export class FoodService {
     return this.http.get("http://localhost:3000/api/foods");
   }
 
+  GetFoodByID(id){
+    return this.http.get("http://localhost:3000/api/foods/" + id);
+  }
+
+
 }

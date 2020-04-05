@@ -21,8 +21,11 @@ const Schema = mongoose.Schema;
 const foodSchema = new Schema({
     title:String,
     description:String,
-    path:String
-})
+    path:String,
+    cooktime:String,
+    size:String,
+    recipe:String
+});
  
 
 const blogPostSchema = new Schema({
@@ -43,6 +46,7 @@ const personalSchema = new Schema({
 const Food = mongoose.model('FoodModel',foodSchema);
 const BlogPost = mongoose.model('BlogPostModel',blogPostSchema);
 const Personal = mongoose.model('PersonalModel',personalSchema);
+
 
 //get sonrası personal listeleme
 app.get('/api/personals',(req,res) => {
@@ -75,7 +79,6 @@ app.post('/api/personals',(req,res) =>{
     });
 })
 
-
 //get sonrası food listeleme
 app.get('/api/foods',(req,res) => { 
     Food.find({},(err,document) => {
@@ -91,7 +94,11 @@ app.post('/api/foods',(req,res)=>{
     var food = new Food({
         title:req.body.title,
         description: req.body.description,
-        path:req.body.path
+        path:req.body.path,
+        cooktime:req.body.cooktime,
+        size:req.body.size,
+        preptime:req.body.preptime,
+        recipe:req.body.recipe
     });
 
     food.save((err) => {
@@ -101,6 +108,20 @@ app.post('/api/foods',(req,res)=>{
         else{
             res.status(500).send(err);
         }
+    })
+});
+
+//id ye göre 1 adet food veren api ucu
+app.get('/api/foods/:id',(req,res) => {
+
+    Food.findById(req.params.id,(err,document) => {
+        if(!err){
+            res.json(document);
+        } 
+        else{
+            res.status(500).json(err);
+        }
+       
     })
 })
 

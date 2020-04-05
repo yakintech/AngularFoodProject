@@ -17,7 +17,6 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
     
     this._foodservice.GetAllFoods().subscribe((data:any) => {
-      console.log(data);
             this.foods = data;
 
     })

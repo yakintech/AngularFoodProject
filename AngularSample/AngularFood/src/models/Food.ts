@@ -1,5 +1,5 @@
 export class Food{
-    id:String;
+    _id:String;
     title:String;
     description:String;
     path:String;
