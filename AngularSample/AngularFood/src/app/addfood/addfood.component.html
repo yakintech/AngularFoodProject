@@ -1,0 +1,25 @@
+<h1>Food Ekleme Alanı</h1>
+<hr>
+<div style="text-align: center;">
+    <div>
+        <label for="">Title</label>
+        <input type="text" [(ngModel)]="food.title">
+    </div>
+    <div>
+        <label for="">Description</label>
+        <input type="text" [(ngModel)]="food.description">
+    </div>
+    <div>
+        <label for="">Cook Time</label>
+        <input type="text" [(ngModel)]="food.cooktime">
+    </div>
+    <div>
+        <label for="">Size</label>
+        <input type="text" [(ngModel)]="food.size">
+    </div>
+    <div>
+        <label for="">Recipe</label>
+        <input type="text" [(ngModel)]="food.recipe">
+    </div>
+    <button (click)="AddFood()">Ekle</button>
+</div>

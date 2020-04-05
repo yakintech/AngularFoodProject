@@ -24,7 +24,8 @@ const foodSchema = new Schema({
     path:String,
     cooktime:String,
     size:String,
-    recipe:String
+    recipe:String,
+    isdeleted:{type:Boolean,default:false}
 });
  
 
@@ -46,6 +47,7 @@ const personalSchema = new Schema({
 const Food = mongoose.model('FoodModel',foodSchema);
 const BlogPost = mongoose.model('BlogPostModel',blogPostSchema);
 const Personal = mongoose.model('PersonalModel',personalSchema);
+
 
 
 //get sonrası personal listeleme
@@ -81,7 +83,7 @@ app.post('/api/personals',(req,res) =>{
 
 //get sonrası food listeleme
 app.get('/api/foods',(req,res) => { 
-    Food.find({},(err,document) => {
+    Food.find({isdeleted:false},(err,document) => {
         if(!err){
             res.json(document);
         }  
@@ -122,6 +124,30 @@ app.get('/api/foods/:id',(req,res) => {
             res.status(500).json(err);
         }
        
+    })
+})
+
+//id ye göre silme
+app.post('/api/foods/delete',(req,res)=>{
+    console.log(req.body);
+    var id = req.body.id;
+
+    Food.findById(id,(err,document)=>{
+        if(!err){
+            document.isdeleted = true;
+            document.save((err)=>{
+                if(!err){
+                    res.json({"status":"ok"});
+                }
+                else{
+                    res.status(500).json(err);
+
+                }
+            })
+        }
+        else{
+            res.status(500).json(err);
+        }
     })
 })
 
