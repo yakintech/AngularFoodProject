@@ -2,6 +2,13 @@ const express = require('express');
 const app = express();
 var bodyParser = require('body-parser')
 var nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
+const jwtkey = 'ironmaiden';
+const jwtExpirySeconds = 300;
+
+
+
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -38,6 +45,7 @@ const blogPostSchema = new Schema({
 
 const personalSchema = new Schema({
     name:String,
+    password:String,
     surname:String,
     title:String,
     description:String,
@@ -48,6 +56,42 @@ const Food = mongoose.model('FoodModel',foodSchema);
 const BlogPost = mongoose.model('BlogPostModel',blogPostSchema);
 const Personal = mongoose.model('PersonalModel',personalSchema);
 
+
+app.post('/token',(req,res) => {
+    var username = req.body.name;
+    var password = req.body.password;
+
+    Personal.find({"name":username,"password":password},(err,document)=>{
+        if(!err){
+            if(document.length > 0){
+                const token = jwt.sign({username},jwtkey,{
+                    algorithm: 'HS256',
+                    expiresIn:jwtExpirySeconds
+                });
+        
+                res.json({'tk':token});
+            }
+            else{
+                res.status(401).send("Kullanıcı adı veya parola hatalı!!");
+            }
+        }
+    })
+
+})
+
+app.get('/admin/muhasebe',(req,res) => {
+    var token = req.query.token;
+
+    try{
+        jwt.verify(token,jwtkey);
+        console.log("OK!")
+        res.json({"privatedata":"çağatay hocanın maaşı 10 $"})
+    }
+    catch (e){
+        console.log(e);
+        res.status(401).send("Token error!!!!!");
+    }
+})
 
 
 //get sonrası personal listeleme
@@ -67,7 +111,8 @@ app.post('/api/personals',(req,res) =>{
         name:req.body.name,
         surname:req.body.surname,
         description:req.body.description,
-        title:req.body.title
+        title:req.body.title,
+        password:req.body.password
     });
 
 
