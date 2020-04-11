@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ad">
+    <button id="btn">Local Storage Data Ekle</button>
+
+
+</body>
+</html>
+<script>
+
+
+    document.getElementById("btn").addEventListener("click",function(){
+        document.cookie = "username=cagatay";
+
+        var ad = document.getElementById("ad").value;
+
+        localStorage.setItem("x",ad);
+
+    })
+
+    var data = localStorage.getItem("x");
+    console.log(data);
+</script>
