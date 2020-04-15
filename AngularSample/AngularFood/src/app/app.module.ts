@@ -19,6 +19,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AddfoodComponent } from './addfood/addfood.component';
 import { FoodlistComponent } from './foodlist/foodlist.component';
 import { PersonaldetailComponent } from './personaldetail/personaldetail.component';
+import { SubmitformtestComponent } from './submitformtest/submitformtest.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     PagenotfoundComponent,
     AddfoodComponent,
     FoodlistComponent,
-    PersonaldetailComponent
+    PersonaldetailComponent,
+    SubmitformtestComponent
   ],
   imports: [
     BrowserModule,

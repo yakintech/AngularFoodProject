@@ -1,0 +1,17 @@
+<div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact - 2</h3>
+    <p>Lets get in touch and talk about your next project.</p>
+
+<form #myform="ngForm" (ngSubmit)="register(myform)" >
+    <input class="w3-input w3-border" type="text" placeholder="Name" ngModel required="" name="username">
+    <input class="w3-input w3-section w3-border" type="text" placeholder="email" ngModel required="" name="email">
+    <input class="w3-input w3-section w3-border" type="text" placeholder="subject" ngModel  required="" name="subject">
+    <input class="w3-input w3-section w3-border" type="text" placeholder="content" ngModel  required="" name="comment">
+    <button class="w3-button w3-black w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> SEND MESSAGE
+    </button>
+
+  
+</form>
+
+</div>

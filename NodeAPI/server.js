@@ -238,6 +238,9 @@ app.post('/api/blogpost',(req,res) => {
 
 
 app.post('/api/contact',(req,res) => {
+
+    console.log(req.body);
+    
     mailOptions.subject = "Konu: " + req.body.subject;
     mailOptions.text = req.body.username + " isimli kişiden bir mesajınız var. Mesajı atan kullanıcı emaili: " + req.body.email + ". Mesaj içeriği: " + req.body.content; 
 

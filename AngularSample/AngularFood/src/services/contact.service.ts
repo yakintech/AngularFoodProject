@@ -12,4 +12,8 @@ export class ContactService {
   SendContact(model:Contact){
     return this.http.post("http://localhost:3000/api/contact",model);
   }
+
+  SendContact2(model:any){
+    return this.http.post("http://localhost:3000/api/contact",model);
+  }
 }
