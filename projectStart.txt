@@ -1,0 +1,16 @@
+1) Proje github veya gitlab gibi bir repoda barınacak. Github 
+üzerinden proje oluşturulacak.
+2) https://mlab.com/ üzerinden bir veritabanı oluştur.
+3) Nodejs projeni oluştur. (server.js) ve schemalarını olusturmaya 
+başla (!)
+4) express js üzerinden her schemanın 
+- list
+- get (id ye göre 1 tanesini getirecek) - nodejs route :id
+- add
+- update ( gelen objeden id ye göre objeyi bul ve güncelle )
+- delete (dileyen arkadaşlar isdeleted mantığını kullanabilir. )
+5) postman üzerinden test
+6) Angular projesini aç!
+7) Tasarıma göre projeyi componentlere böl !
+8) Angular da servis aç ve node tarafını çağır ve componentlerdeki
+işlemlere başla!
